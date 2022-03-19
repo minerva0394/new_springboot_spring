@@ -10,5 +10,5 @@ public class User {
     private String nickName;
     private String email;
     private String address;
-    //test
+    //test 测试上传
 }
