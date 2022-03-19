@@ -9,6 +9,6 @@ public class User {
     private String userPassword;
     private String nickName;
     private String email;
+    private String phone;
     private String address;
-    //test 测试上传
 }
