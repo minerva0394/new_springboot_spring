@@ -6,7 +6,9 @@ import com.example.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/user")
@@ -20,7 +22,7 @@ public class UserController {
 
     // 新增&修改
     @PostMapping
-    public Integer save(@RequestBody User user){
+    public Integer save(@RequestBody User user) {
         return userService.save(user);
     }
 
@@ -34,8 +36,26 @@ public class UserController {
 
     // 删除
     @DeleteMapping("/delete/{id}")
-    public Integer delete(@PathVariable Integer id){
+    public Integer delete(@PathVariable Integer id) {
         return userMapper.deleteById(id);
     }
 
+    /**
+     * 分页查询,pageNum和pageSize实现对前端传值的接收
+     *
+     * @param pageNum
+     * @param pageSize
+     * @return
+     */
+    @GetMapping("/page")
+    public Map<String, Object> findPage(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+        pageNum = (pageNum - 1) * pageSize;
+        List<User> data = userMapper.selectPage(pageNum, pageSize);
+        Integer total = userMapper.findTotal();
+        Map<String, Object> res = new HashMap<>();
+        res.put("data", data);
+        res.put("total", total);
+        return res;
+
+    }
 }

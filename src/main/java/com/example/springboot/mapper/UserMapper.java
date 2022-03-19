@@ -18,4 +18,8 @@ public interface UserMapper {
     int update(User user);
 
     int deleteById(@Param("id") Integer id);
+
+    List<User> selectPage(Integer pageNum, Integer pageSize);
+
+    Integer findTotal();
 }
