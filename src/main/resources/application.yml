@@ -1,9 +1,11 @@
 server:
+  ip: localhost
   port: 9091
 
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: mysql://localhost:3306/new_springboot
-    data-username: root
-    data-password: zzlde500
+    url: jdbc:mysql://localhost:3306/springboot_vue?serverTimezone=GMT%2b8
+    username: root
+    password: zzlde500
+
