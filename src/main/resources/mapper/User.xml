@@ -5,11 +5,11 @@
     <update id="update">
         update sys_user
         <set>
-            <if test="userName != null">
-                userName = #{userName},
+            <if test="username != null">
+                username = #{username},
             </if>
-            <if test="nickName != null">
-                nickName = #{nickName},
+            <if test="nickname != null">
+                nickname = #{nickname},
             </if>
             <if test="email != null">
                 email = #{email},
@@ -32,12 +32,5 @@
         DELETE from sys_user where id = #{id};
     </delete>
 
-    <select id="selectPage" resultType="com.example.springboot.entity.User">
-        SELECT * FROM sys_user limit #{pageNum}, #{pageSize};
-    </select>
-
-    <select id="findTotal" resultType="java.lang.Integer">
-        SELECT COUNT(*) FROM sys_user;
-    </select>
 
 </mapper>
